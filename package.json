@@ -1,7 +1,7 @@
 {
-  "name": "nestjs_starter_v1",
-  "version": "1.0.2",
-  "description": "This is nestjs starter as v1",
+  "name": "dap_nae_ml",
+  "version": "1.0.0",
+  "description": "This is Personal Project for Data Analysis and Machine Learning",
   "author": "MinwooNa",
   "license": "ISC",
   "scripts": {
