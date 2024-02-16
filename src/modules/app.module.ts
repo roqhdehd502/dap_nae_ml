@@ -3,29 +3,21 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import * as Joi from 'joi';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 import { AppController } from '../controllers/app.controller';
 import * as models from '../models';
-import { AuthModule } from '../modules/auth.module';
-import { PostModule } from '../modules/post.module';
+import { RegressionModule } from './regression.module';
 import { AppService } from '../services/app.service';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      validationSchema: Joi.object({
-        JWT_SECRET: Joi.string().required(),
-        JWT_EXPIRATION_TIME: Joi.string().required(),
-        JWT_REFRESH_EXPIRATION_TIME: Joi.string().required(),
-      }),
     }),
     MongooseModule.forRoot(process.env.MONGODB_URI),
     MongooseModule.forFeature(Object.values(models)),
-    AuthModule,
-    PostModule,
+    RegressionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
